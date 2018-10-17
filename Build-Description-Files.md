@@ -24,7 +24,7 @@
 ### 注釋
 單一`#`字符意旨在INF檔裡為注釋。在行內的注釋會中斷一行的碼；行內注釋必須處於行的最後，且儘可能不要放在一個區段([,])標籤(section tag)內。`#`井字符允許出現在引用的字串裡。
 
-Note: _<Usage Block>_ 於變數區段裡伴隨著雙井字符`##`開始且**不**當成注釋，將用來被解析給 EDK II base tools 專案裡的 Intel(R) UEFIPackaging Tool. 在注釋區塊裡的這種運用描述了協定(Protocol), PPIS 或 全區唯一識別碼(GUID)如何使用在C code.
+Note: _<Usage Block>_ 在變數區段裡有一種開頭使用雙井字符`##`的運用，這時**不**當成注釋，而是將被用來解析給 EDK II base tools 專案裡的 Intel(R) UEFIPackaging Tool. 而在注釋區塊裡的這種運用是描述了協定(Protocol), PPIS 或 全區唯一識別碼(GUID)如何使用於C code.
 
 > In \MdePkg\Include\Library\PcdLib.h:
 ```
@@ -42,7 +42,27 @@ extern const  BOOLEAN  _gPcd_FixedAtBuild_PcdHelloWorldPrintEnable;
 #define _PCD_GET_MODE_BOOL_PcdHelloWorldPrintEnable  _gPcd_FixedAtBuild_PcdHelloWorldPrintEnable
 ```
 
-### [Defines] <BR>
+### [Defines] <br>
+```
+     INF_VERSION            = 1.25 
+```
+定義 目前INF 檔所支援的EDK II INF 規範的版本. <br><br>
+``` 
+    BASE_NAME             = NameOuputWithoutExtension
+```
+定義該模組(application, libarary, etc...)的輸出名稱,當編譯完成為最後的二元檔(.efi or .lib binary file). <br><br>
+``` 
+    MODULE_UNI_FILE        = NameOuput.uni
+```
+選擇式的條目可從標頭區段來決定(locate)一個 Unicode 格式的檔案.該檔可用來做在地化(localization)該模組的摘要(abstract)與描述(description).副檔名.uni 檔 必須相呼應於同目錄的 INF 檔. <br><br>
+```
+     FILE_GUID             = 11111111-2222-3333-4444-555555555555
+```
+獨特的GUID於此模組.請看　http://www.guidgen.com/ <br><br>
+```
+     MODULE_TYPE           = USER_DEFINED
+```
+
 
 ### [Packages]
 
