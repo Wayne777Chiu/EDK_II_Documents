@@ -1,6 +1,6 @@
 __NOTOC__
 =下載和編譯程式=
-<ref>關於[本頁原始參照](https://github.com/tianocore/tianocore.github.io/wiki/Getting-Started-with-EDK-II)
-  關於本頁原始參照最後編輯 -> Stephano Cetola edited this page on 16 Aug · 12 revisions >
+<ref>關於本頁原始參照[https://github.com/tianocore/tianocore.github.io/wiki/Getting-Started-with-EDK-II]
+  關於本頁原始參照最後編輯 -> Stephano Cetola edited this page on 16 Aug · 12 revisions
 </ref>
 
