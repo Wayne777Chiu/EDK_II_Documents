@@ -1,6 +1,7 @@
 # 建置描述檔 (Build Description Files)
 
 >關於[本頁原始參照](https://github.com/tianocore/tianocore.github.io/wiki/Build-Description-Files)
+>關於本頁原始參照最後編輯 -> Laurie Jarlstrom edited this page on 29 Jun 2017 · 1 revision 
 
 了解 副檔名DCS，DEC, 和 INF 建置描述檔的基本建立
 其餘請參照最新版的 [[EDK II 規範]](https://github.com/tianocore/tianocore.github.io/wiki/EDK-II-Specifications)
@@ -50,7 +51,7 @@ extern const  BOOLEAN  _gPcd_FixedAtBuild_PcdHelloWorldPrintEnable;
 ``` 
     BASE_NAME             = NameOuputWithoutExtension
 ```
-定義該模組(application, libarary, etc...)的輸出名稱,當編譯完成為最後的二元檔(.efi or .lib binary file). <br><br>
+當編譯完成為最後的二元檔(.efi or .lib binary file,定義該模組(application, libarary, etc...)的輸出名稱. <br><br>
 ``` 
     MODULE_UNI_FILE        = NameOuput.uni
 ```
@@ -58,7 +59,7 @@ extern const  BOOLEAN  _gPcd_FixedAtBuild_PcdHelloWorldPrintEnable;
 ```
      FILE_GUID             = 11111111-2222-3333-4444-555555555555
 ```
-獨特的GUID於此模組.請看　http://www.guidgen.com/ <br><br>
+此模組的獨特GUID.請看　http://www.guidgen.com/ <br><br>
 ```
      MODULE_TYPE           = USER_DEFINED
 ```
