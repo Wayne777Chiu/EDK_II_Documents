@@ -67,11 +67,11 @@ extern const  BOOLEAN  _gPcd_FixedAtBuild_PcdHelloWorldPrintEnable;
 ```
        VERSION_STRING      = 1.0
 ```
-開發者定義的模組版本(Major "." Minor number).
+開發者定義的模組版本(Major "." Minor number).<br><br>
 ```
        ENTRY_POINT         = MainFunctionName
 ```
-假如模組不是函示庫類型，這個變數定義函數的執行進入點,相似於c code 的 main 函數.
+假如模組不是函示庫類型，這個變數定義函數的執行進入點,相似於c code 的 main 函數.<br><br>
 ```
        LIBRARY_CLASS  = LibNameToReference | AllowedModuleType1 AllowedModuleType2 Etc . . .
 ```
@@ -79,13 +79,30 @@ extern const  BOOLEAN  _gPcd_FixedAtBuild_PcdHelloWorldPrintEnable;
 ```
        CONSTRUCTOR         = LibInitializationFunction
 ```
-如果模組是函示庫且需要在起始點(startup)做初始化,這個名稱的變數會指明函數名稱在模組主要進入點(main entry point)被呼叫前先呼叫該函數.
+如果模組是函示庫且需要在起始點(startup)做初始化,這個名稱的變數會指明函數名稱在模組主要進入點(main entry point)被呼叫前先呼叫該函數.<br><br>
 
 ### [Packages]
 
+列出各式的封裝將用來給模組使用.這將告訴建置系統去尋找函示庫物件(函示庫裡的標頭檔), 平台組態資料庫(pcds), 全區唯一識別碼(GUIDs), 協定(Protocols), 和 PPIs (PEIM to PEIM Interface?)(PEIM: PEI Module?)透過不同封裝宣告檔(packages .DEC files).在封裝裡的副檔名 .DCS 檔不會被使用(誤植?? 應該是.DSC Files???). 一般來說最小需求的封裝是 MdePkg.dec.
+```
+      MdePkg/MdePkg.dec
+```
+
 ### [Sources]
 
+列出各式的原始碼及標頭檔用來使用在建置該模組.
+``` 
+      MyFile.h
+      MyFile.c
+```
+
 ### [LibraryClasses]
+
+列出各式的函示庫使用和連結於模組.這值代表了該函示庫在自身的 INF 檔所用的名稱. 在這個區段裡(副檔名 INF 裡[LibraryClasses]區段)的進入點在副檔名DSC 裡的[LibraryClasses]區段都需要有相對應的進入點(entry).這是因為在[Packages]區段裡的封裝並沒有用來使用去決定函示庫模組的連結(link with).<br>
+例:
+``` 
+   LibNameToReference
+```
 
 ### [Protocols]
 
