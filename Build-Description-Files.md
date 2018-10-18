@@ -27,20 +27,17 @@
 
 Note: 有一種開頭使用雙井字符`##`的運用存在於在各種的區段內稱之為 _<Usage Block>_，而此時**不**當成注釋，而是將被用來解析給 EDK II base tools 專案裡的 Intel(R) UEFIPackaging Tool. 而在注釋區塊裡的這種運用描述了協定(Protocol), PPIS 或 全區唯一識別碼(GUID)如何使用於C code.
 
-> In \MdePkg\Include\Library\PcdLib.h:
+例:
+> In \ArmPkg\Drivers\ArmPciCpuIo2Dxe\ArmPciCpuIo2Dxe.inf:
 ```
-#define FeaturePcdGet(TokenName)            _PCD_GET_MODE_BOOL_##TokenName
+[Protocols]
+  gEfiCpuIo2ProtocolGuid                         ## PRODUCES
 ```
-> In \CryptoPkg\Library\OpensslLib\openssl\MdeModulePkg\Application\HelloWorld\HelloWorld.c:
+例:
+> In \ArmVirtPkg\Library\ArmVirtDxeHobLib\ArmVirtDxeHobLib.inf:
 ```
-...
- if (FeaturePcdGet (PcdHelloWorldPrintEnable)) {
- 	...
-```
-> In \Build\NT32IA32\DEBUG_VS2015x86\IA32\MdeModulePkg\Application\HelloWorld\HelloWorld\DEBUG\AutoGen.h:
-```
-extern const  BOOLEAN  _gPcd_FixedAtBuild_PcdHelloWorldPrintEnable;
-#define _PCD_GET_MODE_BOOL_PcdHelloWorldPrintEnable  _gPcd_FixedAtBuild_PcdHelloWorldPrintEnable
+[Guids]
+  gEfiHobListGuid                               ## CONSUMES  ## SystemTable
 ```
 
 ### [Defines] <br>
@@ -105,6 +102,13 @@ extern const  BOOLEAN  _gPcd_FixedAtBuild_PcdHelloWorldPrintEnable;
 ```
 
 ### [Protocols]
+
+列出各式協定(Protocols)的通用識別碼(GUIDs)的變數名稱,該名稱被原始碼所使用或需要.這個變數被定義在封裝的 DEC 檔([Packages].DEC)的 [Guids]區段內.也會列上使用段定義(Usage Block definitions)上提供給這麼模組上的協定. <br>
+例:
+``` 
+  gEfiDiskInfoProtocolGuid                      ## BY_START
+```
+這`## BY_START`是個關鍵詞
 
 ### [Guids]
 
